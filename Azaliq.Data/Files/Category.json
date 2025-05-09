@@ -1,0 +1,27 @@
+[
+  {
+    "Id": "e00b5e57-d6c1-4d6d-9dc3-1ecae13b81c3",
+    "Name": "Indoor Flowers",
+    "Description": "Flowers that thrive indoors, perfect for home or office environments."
+  },
+  {
+    "Id": "d3c5f659-9b89-4425-b84d-7ec1ff7208de",
+    "Name": "Outdoor Flowers",
+    "Description": "Flowers that are ideal for gardens, patios, or outdoor landscaping."
+  },
+  {
+    "Id": "2f2d6e22-e186-4b30-9f61-e6fca30a2aab",
+    "Name": "Potted Plants",
+    "Description": "Flowers and plants sold in pots, easy to care for and move around."
+  },
+  {
+    "Id": "a089d760-f217-4dcf-bb1b-6aa71b7d1b1e",
+    "Name": "Cut Flowers",
+    "Description": "Flowers ideal for bouquets and floral arrangements."
+  },
+  {
+    "Id": "75819dc0-2e2d-45dc-bcee-9c8df9c37fa9",
+    "Name": "Succulents",
+    "Description": "Drought-resistant plants that are low-maintenance and perfect for unique decor."
+  }
+]

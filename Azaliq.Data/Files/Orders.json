@@ -1,0 +1,37 @@
+[
+  {
+    "Id": "45e2f80f-3443-4531-9fc1-c62b5dbf8f2c",
+    "CustomerId": "7f39f573-0f99-4e6e-84c9-b03d4d98f68a",
+    "OrderDate": "2025-05-03T10:30:00Z",
+    "TotalAmount": 65.97,
+    "ApplicationUserId": "66093968-1A4D-4DF5-9382-23F30B112B28"
+  },
+  {
+    "Id": "5b9d92a4-b5a5-46c3-9f4d-40d8b5b79a97",
+    "CustomerId": "f8e1b28d-b560-42a4-bbf2-fd4171b67d96",
+    "OrderDate": "2025-05-02T15:45:00Z",
+    "TotalAmount": 39.96,
+    "ApplicationUserId": "16C5C32F-E408-4753-81E8-0BB5934189D0"
+  },
+  {
+    "Id": "7a7e4db1-1971-4098-97d1-451b872edbfc",
+    "CustomerId": "b6a1f63a-3ffb-487f-b51e-2b8f1d5b21d0",
+    "OrderDate": "2025-05-01T11:00:00Z",
+    "TotalAmount": 54.50,
+    "ApplicationUserId": "66093968-1A4D-4DF5-9382-23F30B112B28"
+  },
+  {
+    "Id": "a5d8f8f0-06ea-49f4-925f-25a8a4901b50",
+    "CustomerId": "3e12f33c-5674-4cf7-a47b-d1a6430d9cb2",
+    "OrderDate": "2025-04-30T08:15:00Z",
+    "TotalAmount": 82.49,
+    "ApplicationUserId": "BC08F981-CC81-4E38-9D65-C6EC207A0842"
+  },
+  {
+    "Id": "6a99b1f0-b823-41a2-99e0-1ac9327c63d9",
+    "CustomerId": "c3b431a3-b379-44f7-b62d-cb9ab3d84f80",
+    "OrderDate": "2025-04-28T14:00:00Z",
+    "TotalAmount": 115.80,
+    "ApplicationUserId": "66093968-1A4D-4DF5-9382-23F30B112B28"
+  }
+]
