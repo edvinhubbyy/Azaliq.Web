@@ -25,12 +25,6 @@ namespace Azaliq.Data.Configuration
             entity.Property(o => o.TotalAmount)
                 .IsRequired()
                 .HasColumnType("decimal(18,2)");
-
-            // Define relation between the Order and Customer entities
-            entity.HasOne(o => o.Customer)
-                .WithMany(c => c.Orders)
-                .HasForeignKey(o => o.CustomerId)
-                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 

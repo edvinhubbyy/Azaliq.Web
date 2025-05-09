@@ -56,30 +56,7 @@ namespace Azaliq.Data.Seeding
                             continue;
                         }
 
-                        // Check if the referenced Customer exists
-                        Customer? customer = await dbContext
-                            .Customers
-                            .FirstOrDefaultAsync(c => c.Id == orderDto.CustomerId);
-
-                        if (customer == null)
-                        {
-                            string logMessage = string.Format(EntityImportError, nameof(Order)) + ReferencedEntityMissing;
-                            this.Logger.LogWarning(logMessage);
-                            continue;
-                        }
-
-                        // Check if the referenced ApplicationUser exists
-                        ApplicationUser? user = await dbContext
-                            .ApplicationUsers
-                            .FirstOrDefaultAsync(au => au.Id == orderDto.ApplicationUserId);
-
-                        if (user == null)
-                        {
-                            string logMessage = string.Format(EntityImportError, nameof(Order)) + ReferencedEntityMissing;
-                            this.Logger.LogWarning(logMessage);
-                            continue;
-                        }
-
+                        
                         // Optionally: Check for duplicates (by ID, depending on your business rule)
                         Order? existingOrder = await dbContext
                             .Orders
@@ -95,10 +72,8 @@ namespace Azaliq.Data.Seeding
                         Order newOrder = new Order()
                         {
                             Id = orderDto.Id,
-                            CustomerId = orderDto.CustomerId,
                             OrderDate = orderDto.OrderDate,
-                            TotalAmount = orderDto.TotalAmount,
-                            ApplicationUserId = orderDto.ApplicationUserId
+                            TotalAmount = orderDto.TotalAmount
                         };
 
                         validOrders.Add(newOrder);

@@ -129,43 +129,13 @@ namespace Azaliq.Data.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("Azaliq.Data.Models.Models.Customer", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Customers");
-                });
-
             modelBuilder.Entity("Azaliq.Data.Models.Models.Order", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("ApplicationUserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("CustomerId")
+                    b.Property<Guid?>("ApplicationUserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("OrderDate")
@@ -177,8 +147,6 @@ namespace Azaliq.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId");
-
-                    b.HasIndex("CustomerId");
 
                     b.ToTable("Orders");
                 });
@@ -394,21 +362,9 @@ namespace Azaliq.Data.Migrations
 
             modelBuilder.Entity("Azaliq.Data.Models.Models.Order", b =>
                 {
-                    b.HasOne("Azaliq.Data.Models.Models.ApplicationUser", "ApplicationUser")
+                    b.HasOne("Azaliq.Data.Models.Models.ApplicationUser", null)
                         .WithMany("Orders")
-                        .HasForeignKey("ApplicationUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Azaliq.Data.Models.Models.Customer", "Customer")
-                        .WithMany("Orders")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ApplicationUser");
-
-                    b.Navigation("Customer");
+                        .HasForeignKey("ApplicationUserId");
                 });
 
             modelBuilder.Entity("Azaliq.Data.Models.Models.OrderItem", b =>
@@ -502,11 +458,6 @@ namespace Azaliq.Data.Migrations
             modelBuilder.Entity("Azaliq.Data.Models.Models.Category", b =>
                 {
                     b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("Azaliq.Data.Models.Models.Customer", b =>
-                {
-                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("Azaliq.Data.Models.Models.Order", b =>

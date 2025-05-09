@@ -1,26 +1,26 @@
 [
   {
-    "Id": "e00b5e57-d6c1-4d6d-9dc3-1ecae13b81c3",
+    "Id": "D7A5E3DB-FF6A-4A7E-BC2C-9E3CDB9C1AC1",
     "Name": "Indoor Flowers",
     "Description": "Flowers that thrive indoors, perfect for home or office environments."
   },
   {
-    "Id": "d3c5f659-9b89-4425-b84d-7ec1ff7208de",
+    "Id": "C8F1D123-2A3B-44E0-B5AC-0FBD05E1E1C2",
     "Name": "Outdoor Flowers",
     "Description": "Flowers that are ideal for gardens, patios, or outdoor landscaping."
   },
   {
-    "Id": "2f2d6e22-e186-4b30-9f61-e6fca30a2aab",
+    "Id": "ABF0B939-B332-4014-9B94-E24D4310A3B0",
     "Name": "Potted Plants",
     "Description": "Flowers and plants sold in pots, easy to care for and move around."
   },
   {
-    "Id": "a089d760-f217-4dcf-bb1b-6aa71b7d1b1e",
+    "Id": "82EF7A28-E9F3-4C9F-9D2A-24042474611C",
     "Name": "Cut Flowers",
     "Description": "Flowers ideal for bouquets and floral arrangements."
   },
   {
-    "Id": "75819dc0-2e2d-45dc-bcee-9c8df9c37fa9",
+    "Id": "7C97B87E-56F4-43B3-B7DA-B64EA77684DB",
     "Name": "Succulents",
     "Description": "Drought-resistant plants that are low-maintenance and perfect for unique decor."
   }

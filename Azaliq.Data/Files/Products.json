@@ -4,13 +4,13 @@
     "Name": "Rose",
     "Price": 19.99,
     "Description": "A beautiful red rose",
-    "CategoryId": "e00b5e57-d6c1-4d6d-9dc3-1ecae13b81c3"
+    "CategoryId": "D7A5E3DB-FF6A-4A7E-BC2C-9E3CDB9C1AC1"
   },
   {
     "Id": "70c5f287-1c1f-4d96-8bb2-c680781e2f1b",
     "Name": "Tulip",
     "Price": 15.50,
     "Description": "A lovely yellow tulip",
-    "CategoryId": "d3c5f659-9b89-4425-b84d-7ec1ff7208de"
+    "CategoryId": "C8F1D123-2A3B-44E0-B5AC-0FBD05E1E1C2"
   }
 ]
