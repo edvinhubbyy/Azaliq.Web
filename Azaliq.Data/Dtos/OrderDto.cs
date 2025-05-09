@@ -15,6 +15,9 @@ namespace Azaliq.Data.Dtos
         public Guid Id { get; set; }  // Change Id to Guid
         public DateTime OrderDate { get; set; }
         public decimal TotalAmount { get; set; }
+
+        public Guid ApplicationUserId { get; set; }
+
     }
 
 }

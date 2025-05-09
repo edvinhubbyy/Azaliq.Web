@@ -2,8 +2,6 @@
 {
     public class ApplicationUserProduct
     {
-        public Guid Id { get; set; }
-
         public Guid ApplicationUserId { get; set; }  // Foreign key to ApplicationUser
         public ApplicationUser ApplicationUser { get; set; } = null!;  // Navigation property to ApplicationUser
 

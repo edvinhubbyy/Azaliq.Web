@@ -27,8 +27,6 @@ namespace Azaliq.Data
 
         public DbSet<ApplicationUserProduct> ApplicationUserProducts { get; set; }
 
-        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
-
         public DbSet<OrderItem> OrderItems { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder builder)

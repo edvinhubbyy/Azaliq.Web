@@ -35,60 +35,57 @@ namespace Azaliq.Data.Seeding
         {
             string jsonStr = await File.ReadAllTextAsync(FilePath);
 
-            try
-            {
-                ApplicationUserProductDto[]? dtos = JsonSerializer.Deserialize<ApplicationUserProductDto[]>(jsonStr);
-
-                if (dtos != null && dtos.Length > 0)
+            
+                try
                 {
-                    ICollection<ApplicationUserProduct> validEntities = new List<ApplicationUserProduct>();
+                    ApplicationUserProductDto[]? dtos = JsonSerializer.Deserialize<ApplicationUserProductDto[]>(jsonStr);
 
-                    foreach (var dto in dtos)
+                    if (dtos != null && dtos.Length > 0)
                     {
-                        if (!this.EntityValidator.IsValid(dto))
+                        ICollection<ApplicationUserProduct> validEntities = new List<ApplicationUserProduct>();
+
+                        foreach (var dto in dtos)
                         {
-                            this.Logger.LogWarning(BuildEntityValidatorWarningMessage(nameof(ApplicationUserProduct)));
-                            continue;
+                            if (!this.EntityValidator.IsValid(dto))
+                            {
+                                this.Logger.LogWarning(BuildEntityValidatorWarningMessage(nameof(ApplicationUserProduct)));
+                                continue;
+                            }
+
+                            var userExists = await dbContext.Users.AnyAsync(u => u.Id == dto.ApplicationUserId);
+                            var productExists = await dbContext.Products.AnyAsync(p => p.Id == dto.ProductId);
+
+                            var exists = await dbContext.ApplicationUserProducts
+                                .AnyAsync(x => x.ApplicationUserId == dto.ApplicationUserId && x.ProductId == dto.ProductId);
+
+                            if (exists)
+                            {
+                                this.Logger.LogWarning(EntityInstanceAlreadyExist);
+                                continue;
+                            }
+
+                            var entity = new ApplicationUserProduct
+                            {
+                                ApplicationUserId = dto.ApplicationUserId,
+                                ProductId = dto.ProductId
+                            };
+
+                            validEntities.Add(entity);
                         }
 
-                        var userExists = await dbContext.Users.AnyAsync(u => u.Id == dto.ApplicationUserId);
-                        var productExists = await dbContext.Products.AnyAsync(p => p.Id == dto.ProductId);
-
-                        if (!userExists || !productExists)
-                        {
-                            this.Logger.LogWarning($"Invalid reference: User or Product not found for entry with ID {dto.Id}.");
-                            continue;
-                        }
-
-                        var exists = await dbContext.ApplicationUserProducts
-                            .AnyAsync(x => x.ApplicationUserId == dto.ApplicationUserId && x.ProductId == dto.ProductId);
-
-                        if (exists)
-                        {
-                            this.Logger.LogWarning(EntityInstanceAlreadyExist);
-                            continue;
-                        }
-
-                        var entity = new ApplicationUserProduct
-                        {
-                            Id = dto.Id,
-                            ApplicationUserId = dto.ApplicationUserId,
-                            ProductId = dto.ProductId
-                        };
-
-                        validEntities.Add(entity);
+                        await dbContext.ApplicationUserProducts.AddRangeAsync(validEntities);
+                        await dbContext.SaveChangesAsync();
+                        this.Logger.LogInformation("ApplicationUserProducts successfully seeded.");
                     }
-
-                    await dbContext.ApplicationUserProducts.AddRangeAsync(validEntities);
-                    await dbContext.SaveChangesAsync();
-                    this.Logger.LogInformation("ApplicationUserProducts successfully seeded.");
                 }
-            }
-            catch (Exception ex)
-            {
-                this.Logger.LogError(ex, "Error occurred while seeding ApplicationUserProducts.");
-                throw;
-            }
+                catch (Exception ex)
+                {
+                    this.Logger.LogError(ex, "Error occurred while seeding ApplicationUserProducts.");
+                    throw;
+                }
+            
+
+
         }
     }
 }

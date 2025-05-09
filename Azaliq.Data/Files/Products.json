@@ -12,5 +12,33 @@
     "Price": 15.50,
     "Description": "A lovely yellow tulip",
     "CategoryId": "C8F1D123-2A3B-44E0-B5AC-0FBD05E1E1C2"
+  },
+  {
+    "Id": "e23dcb5b-d383-41bb-8354-4b15d8eebf9a",
+    "Name": "Lily",
+    "Price": 12.99,
+    "Description": "Elegant white lily",
+    "CategoryId": "82EF7A28-E9F3-4C9F-9D2A-24042474611C"
+  },
+  {
+    "Id": "c17f1a7b-319d-44c9-84f3-571be64b5c84",
+    "Name": "Orchid",
+    "Price": 22.50,
+    "Description": "Purple orchid in a pot",
+    "CategoryId": "ABF0B939-B332-4014-9B94-E24D4310A3B0"
+  },
+  {
+    "Id": "1a41cc8d-c2f3-4fa0-a0f3-7742e9c557a7",
+    "Name": "Sunflower",
+    "Price": 9.99,
+    "Description": "Bright and cheerful sunflower",
+    "CategoryId": "C8F1D123-2A3B-44E0-B5AC-0FBD05E1E1C2"
+  },
+  {
+    "Id": "75819dc0-2e2d-45dc-bcee-9c8df9c37fa9",
+    "Name": "Daisy",
+    "Price": 7.49,
+    "Description": "Simple and classic daisy",
+    "CategoryId": "7C97B87E-56F4-43B3-B7DA-B64EA77684DB"
   }
 ]

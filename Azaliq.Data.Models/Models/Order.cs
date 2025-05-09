@@ -18,6 +18,10 @@ namespace Azaliq.Data.Models.Models
         // Other navigation properties, such as the related OrderItems
         public ICollection<OrderItem> OrderItems { get; set; } 
             = new HashSet<OrderItem>();
+
+        public Guid ApplicationUserId { get; set; }
+
+        public ApplicationUser ApplicationUser { get; set; } = null!;
     }
 
 }

@@ -10,11 +10,15 @@ public class ApplicationDbContextSeeder : IDbSeeder
 {
 
     private readonly AzaliqDbContext dbContext;
+
     private readonly UserManager<ApplicationUser> userManager;
     private readonly RoleManager<IdentityRole<Guid>> roleManager;
+
     private readonly IValidator entityValidator;
     private readonly IXmlHelper xmlHelper;
+
     private readonly ILogger<ApplicationDbContextSeeder> logger;
+
     private readonly ICollection<IEntitySeeder> entitySeeders;
 
     public ApplicationDbContextSeeder(AzaliqDbContext dbContext,
@@ -22,12 +26,13 @@ public class ApplicationDbContextSeeder : IDbSeeder
         RoleManager<IdentityRole<Guid>> roleManager,
         IValidator entityValidator,
         IXmlHelper xmlHelper,
-        ILogger<CategoriesSeeder> categoryLogger,  // Renamed for consistency
-        ILogger<OrderItemSeeder> orderItemLogger,
-        ILogger<OrderSeeder> orderLogger,  // Renamed to follow camelCase
-        ILogger<ProductSeeder> productLogger,
         ILogger<IdentitySeeder> identityLogger,
-        ILogger<ApplicationUserProductSeeder> applicationUserProductLogger)
+        ILogger<CategoriesSeeder> categoryLogger,
+        ILogger<ProductSeeder> productLogger,
+        ILogger<ApplicationUserProductSeeder> applicationUserProductLogger, // Renamed for consistency
+        ILogger<OrderItemSeeder> orderItemLogger,
+        ILogger<OrderSeeder> orderLogger  
+        )
     {
         this.dbContext = dbContext;
         this.userManager = userManager;
@@ -36,41 +41,14 @@ public class ApplicationDbContextSeeder : IDbSeeder
         this.xmlHelper = xmlHelper;
 
         this.entitySeeders = new List<IEntitySeeder>();
-        this.InitializeDbSeeders(categoryLogger, orderItemLogger, orderLogger, productLogger, identityLogger, applicationUserProductLogger);
+        this.InitializeDbSeeders(identityLogger,categoryLogger, productLogger, applicationUserProductLogger, orderItemLogger, orderLogger);
     }
 
     public async Task SeedData()
     {
-        // Seed Categories First
         foreach (IEntitySeeder entitySeeder in this.entitySeeders)
         {
-            if (entitySeeder is CategoriesSeeder categorySeeder)
-            {
-                try
-                {
-                    await categorySeeder.SeedEntityData();
-                }
-                catch (Exception ex)
-                {
-                    this.logger.LogError($"Error seeding {categorySeeder.GetType().Name}: {ex.Message}");
-                }
-            }
-        }
-
-        // Then Seed Products
-        foreach (IEntitySeeder entitySeeder in this.entitySeeders)
-        {
-            if (entitySeeder is ProductSeeder productSeeder)
-            {
-                try
-                {
-                    await productSeeder.SeedEntityData();
-                }
-                catch (Exception ex)
-                {
-                    this.logger.LogError($"Error seeding {productSeeder.GetType().Name}: {ex.Message}");
-                }
-            }
+            await entitySeeder.SeedEntityData();
         }
     }
 
@@ -79,13 +57,15 @@ public class ApplicationDbContextSeeder : IDbSeeder
 
 
     private void InitializeDbSeeders(
-    ILogger<CategoriesSeeder> categorieLogger,
-    ILogger<OrderItemSeeder> orderItemLogger,
-    ILogger<OrderSeeder> orderLogger,
-    ILogger<ProductSeeder> productLogger,
     ILogger<IdentitySeeder> identityLogger,
-    ILogger<ApplicationUserProductSeeder> applicationUserProductLogger)
+    ILogger<CategoriesSeeder> categorieLogger,
+    ILogger<ProductSeeder> productLogger,
+    ILogger<ApplicationUserProductSeeder> applicationUserProductLogger,
+    ILogger<OrderItemSeeder> orderItemLogger,
+    ILogger<OrderSeeder> orderLogger)
     {
+        this.entitySeeders.Add(new IdentitySeeder(this.dbContext, this.entityValidator, identityLogger, this.userManager, this.roleManager));
+
         // Order matters: Categories BEFORE Products
         this.entitySeeders.Add(new CategoriesSeeder(this.dbContext, this.entityValidator, categorieLogger));
         this.entitySeeders.Add(new ProductSeeder(this.dbContext, this.entityValidator, productLogger));
@@ -94,7 +74,6 @@ public class ApplicationDbContextSeeder : IDbSeeder
         // Add other seeders after their dependencies
         this.entitySeeders.Add(new OrderItemSeeder(this.dbContext, orderItemLogger,this.entityValidator));
         this.entitySeeders.Add(new OrderSeeder(this.dbContext, orderLogger, this.entityValidator));
-        this.entitySeeders.Add(new IdentitySeeder(this.dbContext, this.entityValidator, identityLogger, this.userManager, this.roleManager));
     }
 
 }

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Azaliq.Data.Migrations
 {
     [DbContext(typeof(AzaliqDbContext))]
-    [Migration("20250509165514_InitialMigration")]
+    [Migration("20250509174741_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -101,9 +101,6 @@ namespace Azaliq.Data.Migrations
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("ApplicationUserId", "ProductId");
 
                     b.HasIndex("ProductId");
@@ -138,7 +135,7 @@ namespace Azaliq.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("ApplicationUserId")
+                    b.Property<Guid>("ApplicationUserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("OrderDate")
@@ -365,9 +362,13 @@ namespace Azaliq.Data.Migrations
 
             modelBuilder.Entity("Azaliq.Data.Models.Models.Order", b =>
                 {
-                    b.HasOne("Azaliq.Data.Models.Models.ApplicationUser", null)
+                    b.HasOne("Azaliq.Data.Models.Models.ApplicationUser", "ApplicationUser")
                         .WithMany("Orders")
-                        .HasForeignKey("ApplicationUserId");
+                        .HasForeignKey("ApplicationUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
                 });
 
             modelBuilder.Entity("Azaliq.Data.Models.Models.OrderItem", b =>

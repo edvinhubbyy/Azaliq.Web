@@ -37,7 +37,7 @@ namespace Azaliq.Data.Seeding
         private async Task ImportCategoryFromJson()
         {
             string OrderSeederStr = await File.ReadAllTextAsync(FilePath);
-
+            
             try
             {
 
@@ -73,7 +73,8 @@ namespace Azaliq.Data.Seeding
                         {
                             Id = orderDto.Id,
                             OrderDate = orderDto.OrderDate,
-                            TotalAmount = orderDto.TotalAmount
+                            TotalAmount = orderDto.TotalAmount,
+                            ApplicationUserId = orderDto.ApplicationUserId
                         };
 
                         validOrders.Add(newOrder);
@@ -89,6 +90,9 @@ namespace Azaliq.Data.Seeding
                 this.Logger.LogError(ex.Message);
                 throw;
             }
+
+
+            
 
         }
 

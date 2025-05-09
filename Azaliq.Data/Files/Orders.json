@@ -2,26 +2,31 @@
   {
     "Id": "45e2f80f-3443-4531-9fc1-c62b5dbf8f2c",
     "OrderDate": "2025-05-03T10:30:00Z",
-    "TotalAmount": 65.97
+    "TotalAmount": 65.97,
+    "ApplicationUserId": "F0428B60-94DF-4D96-9DA7-5860F0331D28"
   },
   {
     "Id": "5b9d92a4-b5a5-46c3-9f4d-40d8b5b79a97",
     "OrderDate": "2025-05-02T15:45:00Z",
-    "TotalAmount": 39.96
+    "TotalAmount": 39.96,
+    "ApplicationUserId": "7FAC4A36-A22A-4AD5-B2DE-A17E0E70D6CA"
   },
   {
     "Id": "7a7e4db1-1971-4098-97d1-451b872edbfc",
     "OrderDate": "2025-05-01T11:00:00Z",
-    "TotalAmount": 54.50
+    "TotalAmount": 54.50,
+    "ApplicationUserId": "3BA25AA0-F422-4C86-87BA-A46B23C89BCC"
   },
   {
     "Id": "a5d8f8f0-06ea-49f4-925f-25a8a4901b50",
     "OrderDate": "2025-04-30T08:15:00Z",
-    "TotalAmount": 82.49
+    "TotalAmount": 82.49,
+    "ApplicationUserId": "F0428B60-94DF-4D96-9DA7-5860F0331D28"
   },
   {
     "Id": "6a99b1f0-b823-41a2-99e0-1ac9327c63d9",
     "OrderDate": "2025-04-28T14:00:00Z",
-    "TotalAmount": 115.80
+    "TotalAmount": 115.80,
+    "ApplicationUserId": "7FAC4A36-A22A-4AD5-B2DE-A17E0E70D6CA"
   }
 ]

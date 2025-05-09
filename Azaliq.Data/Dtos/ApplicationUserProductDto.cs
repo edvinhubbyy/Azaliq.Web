@@ -8,8 +8,6 @@ namespace Azaliq.Data.Dtos
 {
     public class ApplicationUserProductDto
     {
-        public Guid Id { get; set; }
-
         public Guid ApplicationUserId { get; set; }
 
         public Guid ProductId { get; set; }
