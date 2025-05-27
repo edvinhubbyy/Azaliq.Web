@@ -73,7 +73,7 @@ namespace Azaliq.Data.Seeding
                             validEntities.Add(entity);
                         }
 
-                        await dbContext.ApplicationUserProducts.AddRangeAsync(validEntities);
+                        await dbContext.ApplicationUserProducts.AddRangeAsync(validEntities); 
                         await dbContext.SaveChangesAsync();
                         this.Logger.LogInformation("ApplicationUserProducts successfully seeded.");
                     }
