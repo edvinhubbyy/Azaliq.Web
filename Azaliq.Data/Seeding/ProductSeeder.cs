@@ -71,6 +71,13 @@ namespace Azaliq.Data.Seeding
                             this.Logger.LogInformation($"Found Category: {category.Name} for Product: {ProductDto.Name}");
                         }
 
+                        var userExists = await dbContext.Users.AnyAsync(u => u.Id == ProductDto.Id);
+                        if (!userExists)
+                        {
+                            this.Logger.LogWarning($"User with ID {ProductDto.Id} does not exist.");
+                            continue;
+                        }
+
                         Product? existingProduct = await dbContext
                             .Products
                             .FirstOrDefaultAsync(p => p.Id == ProductDto.Id || p.Name == ProductDto.Name);

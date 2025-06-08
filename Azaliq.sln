@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azaliq.Common", "Azaliq.Com
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{4B772E3C-0A50-40A8-8959-6DFC414E2563}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azaliq.Web.ViewModels", "Azaliq.Web.ViewModels\Azaliq.Web.ViewModels.csproj", "{2C1ECD30-A61A-41F8-AF77-F6B642668966}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{B70B17D6-0C7A-4D6A-BD23-9F04DC0716C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B70B17D6-0C7A-4D6A-BD23-9F04DC0716C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B70B17D6-0C7A-4D6A-BD23-9F04DC0716C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C1ECD30-A61A-41F8-AF77-F6B642668966}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C1ECD30-A61A-41F8-AF77-F6B642668966}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C1ECD30-A61A-41F8-AF77-F6B642668966}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C1ECD30-A61A-41F8-AF77-F6B642668966}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,6 +60,7 @@ Global
 		{4E8057D9-619C-4418-8734-9B86A28D627D} = {89DF6308-6320-4E23-B01C-D87E4C38276D}
 		{9ADE4D5B-355B-497C-83A5-AB2A4D15446B} = {89DF6308-6320-4E23-B01C-D87E4C38276D}
 		{94248953-D64B-421D-B7AB-AC586E7D0C37} = {2AAD2D45-8EC5-498C-80E2-34C5BC0E2ACE}
+		{2C1ECD30-A61A-41F8-AF77-F6B642668966} = {4B772E3C-0A50-40A8-8959-6DFC414E2563}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F951C085-FE1B-4B09-A21F-C3A4EFA1AA32}

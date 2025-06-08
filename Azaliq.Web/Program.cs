@@ -1,8 +1,10 @@
 using Azaliq.Data;
 using Azaliq.Data.Models.Models;
 using Azaliq.Data.Seeding;
-using Azaliq.Data.Utilities.Interfaces;
 using Azaliq.Data.Utilities;
+using Azaliq.Data.Utilities.Interfaces;
+using Azaliq.Services.Services;
+using Azaliq.Services.Services.Interfaces;
 using Azaliq.Web.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -27,7 +29,7 @@ builder.Services
     .AddIdentity<ApplicationUser, IdentityRole<Guid>>(options =>
     {
         options.SignIn.RequireConfirmedAccount = false;
-        options.Password.RequireDigit = true;
+        options.Password.RequireDigit = false;
         options.Password.RequireNonAlphanumeric = false;
         options.Password.RequireLowercase = false;
         options.Password.RequireUppercase = false;
@@ -38,6 +40,8 @@ builder.Services
     .AddEntityFrameworkStores<AzaliqDbContext>()
     .AddDefaultTokenProviders()
     .AddDefaultUI();
+
+builder.Services.AddScoped<IProductService, ProductService>();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();

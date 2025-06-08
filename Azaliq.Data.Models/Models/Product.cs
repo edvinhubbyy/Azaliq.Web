@@ -6,19 +6,21 @@ namespace Azaliq.Data.Models.Models
     public class Product
     {
 
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         public string Name { get; set; } = null!;
 
         public string Description { get; set; } = null!;
 
-        public decimal Price { get; set; }
+        public double Price { get; set; }
 
         public Guid CategoryId { get; set; }
 
         public Category Category { get; set; } = null!;
 
         public int StockQuantity { get; set; }
+
+        public string? ImageUrl { get; set; }
 
         public bool IsDeleted { get; set; }
 

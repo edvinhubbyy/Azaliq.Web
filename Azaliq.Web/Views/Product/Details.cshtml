@@ -1,0 +1,183 @@
+﻿@model Azaliq.Web.ViewModels.Product.ProductDetailsViewModel
+
+@{
+    ViewData["Title"] = "Product Details";
+    Layout = "_Layout";
+}
+
+<style>
+    /* Container and card styling */
+    .product-details-card {
+        max-width: 1000px;
+        border-left: 6px solid #d63384;
+        background-color: #fff0f6;
+        box-shadow: 0 0 15px rgba(214, 51, 132, 0.15);
+        border-radius: 20px;
+        padding: 3rem 3.5rem;
+        margin: 3rem auto;
+        color: #3a3a3a;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Heading */
+    .product-details-card h2 {
+        color: #d63384;
+        font-weight: 900;
+        font-size: 2.8rem;
+        margin-bottom: 1rem;
+        letter-spacing: 2px;
+    }
+
+    /* Description and text */
+    .product-details-card p {
+        font-size: 1.1rem;
+        line-height: 1.5;
+        margin-bottom: 0.75rem;
+        font-weight: 600;
+    }
+
+    /* Badges */
+    .badge-custom {
+        background-color: #ffd6e8;
+        color: #a91e52;
+        border: 1.5px solid #d63384;
+        font-weight: 700;
+        padding: 0.3rem 0.8rem;
+        border-radius: 12px;
+        font-size: 1rem;
+    }
+
+    /* Stock text */
+    .in-stock {
+        color: #28a745;
+        font-weight: 700;
+    }
+
+    .out-of-stock {
+        color: #dc3545;
+        font-weight: 700;
+    }
+
+    /* Buttons common style */
+    a.btn-clean, button.btn-clean {
+        background-color: transparent;
+        border: 2.5px solid #d63384;
+        color: #d63384;
+        padding: 0.65rem 2rem;
+        font-weight: 700;
+        font-size: 1rem;
+        border-radius: 30px;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        text-decoration: none;
+    }
+
+    /* Hover effect */
+    a.btn-clean:hover, button.btn-clean:hover {
+        background-color: #d63384;
+        color: white;
+    }
+
+    /* Icon sizing */
+    a.btn-clean i, button.btn-clean i {
+        font-size: 1.25rem;
+    }
+
+    /* Remove default form button styles */
+    button.btn-clean {
+        border: 2.5px solid #d63384;
+        background: transparent;
+        font-family: inherit;
+        font-weight: 700;
+    }
+
+    /* Remove default button focus outline for better design */
+    button.btn-clean:focus {
+        outline: none;
+        box-shadow: 0 0 6px 2px rgba(214, 51, 132, 0.6);
+    }
+
+    /* Image styling */
+    .product-image {
+        width: 100%;
+        max-height: 450px;
+        object-fit: cover;
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(214, 51, 132, 0.2);
+    }
+
+    /* Buttons container */
+    .btn-group {
+        margin-top: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+</style>
+
+<div class="container py-5" style="min-height: 95vh;">
+    <div class="product-details-card">
+        <div class="row g-5 align-items-center">
+            <div class="col-md-5">
+                <img src="@Model.ImageUrl" alt="@Model.Name" class="product-image" />
+            </div>
+
+            <div class="col-md-7 d-flex flex-column justify-content-between">
+                <div>
+                    <h2>🌷 @Model.Name</h2>
+                    <hr />
+
+                    <p><strong>Description:</strong> @Model.Description</p>
+                    <p><strong>Category:</strong> <span class="badge badge-custom">@Model.CategoryName</span></p>
+                    <p><strong>Price:</strong> <span class="text-success fw-semibold">@Model.Price.ToString("C")</span></p>
+                    <p>
+                        <strong>Stock:</strong>
+                        @if (Model.StockQuantity > 0)
+                        {
+                            <span class="in-stock">@Model.StockQuantity in stock</span>
+                        }
+                        else
+                        {
+                            <span class="out-of-stock">Out of stock</span>
+                        }
+                    </p>
+                </div>
+
+                <div class="btn-group">
+                    <a asp-controller="Product" asp-action="Index" class="btn-clean">
+                        <i class="bi bi-arrow-left"></i> Back to List
+                    </a>
+
+                    @if (User?.IsInRole("Admin") ?? false)
+                    {
+                        <a asp-controller="Product" asp-action="Edit" asp-route-id="@Model.Id" class="btn-clean">
+                            ✏️ Edit
+                        </a>
+
+                        <form asp-controller="Product" asp-action="Delete" asp-route-id="@Model.Id" method="post" class="m-0"
+                              onsubmit="return confirm('Are you sure you want to delete this product?');">
+                            <button type="submit" class="btn-clean">
+                                🗑️ Delete
+                            </button>
+                        </form>
+                    }
+
+                    @if (User?.Identity?.IsAuthenticated ?? false)
+                    {
+                        <form asp-controller="Favorites" asp-action="Add" method="post" class="m-0">
+                            <input type="hidden" name="productId" value="@Model.Id" />
+                            <button type="submit" class="btn-clean" style="border-color: #d63384; color: #d63384;">
+                                <i class="bi bi-heart-fill"></i> Add to Favorites
+                            </button>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

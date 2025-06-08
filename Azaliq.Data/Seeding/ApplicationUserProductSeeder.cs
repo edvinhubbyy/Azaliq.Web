@@ -55,6 +55,12 @@ namespace Azaliq.Data.Seeding
                             var userExists = await dbContext.Users.AnyAsync(u => u.Id == dto.ApplicationUserId);
                             var productExists = await dbContext.Products.AnyAsync(p => p.Id == dto.ProductId);
 
+                            if (!userExists || !productExists)
+                            {
+                                this.Logger.LogWarning("User or Product does not exist for ApplicationUserProduct.");
+                                continue;
+                            }
+
                             var exists = await dbContext.ApplicationUserProducts
                                 .AnyAsync(x => x.ApplicationUserId == dto.ApplicationUserId && x.ProductId == dto.ProductId);
 
@@ -74,7 +80,7 @@ namespace Azaliq.Data.Seeding
                         }
 
                         await dbContext.ApplicationUserProducts.AddRangeAsync(validEntities); 
-                        await dbContext.SaveChangesAsync();
+                            await dbContext.SaveChangesAsync();
                         this.Logger.LogInformation("ApplicationUserProducts successfully seeded.");
                     }
                 }

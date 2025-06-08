@@ -26,6 +26,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Azaliq.Data.Models\Azaliq.Data.Models.csproj" />
     <ProjectReference Include="..\Azaliq.Data\Azaliq.Data.csproj" />
+    <ProjectReference Include="..\Azaliq.Web.ViewModels\Azaliq.Web.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>

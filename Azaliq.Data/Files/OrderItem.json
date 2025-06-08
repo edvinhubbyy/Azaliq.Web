@@ -1,34 +1,29 @@
 [
   {
-    "Id": "bdf2db4d-86c5-4b8d-8f65-91d82ff2f74d",
     "OrderId": "45e2f80f-3443-4531-9fc1-c62b5dbf8f2c",
     "ProductId": "e23dcb5b-d383-41bb-8354-4b15d8eebf9a",
     "Quantity": 2,
     "UnitPrice": 12.99
   },
   {
-    "Id": "4a99b3d4-9c3f-4d5e-92b8-5c34da746f71",
     "OrderId": "45e2f80f-3443-4531-9fc1-c62b5dbf8f2c",
     "ProductId": "c17f1a7b-319d-44c9-84f3-571be64b5c84",
     "Quantity": 1,
     "UnitPrice": 22.50
   },
   {
-    "Id": "3f0e3b62-1b3b-47c0-bc65-739a9ef057ae",
     "OrderId": "5b9d92a4-b5a5-46c3-9f4d-40d8b5b79a97",
     "ProductId": "1a41cc8d-c2f3-4fa0-a0f3-7742e9c557a7",
     "Quantity": 3,
     "UnitPrice": 9.99
   },
   {
-    "Id": "22e96d95-e578-4381-b7a3-7d6e5a053a49",
     "OrderId": "7a7e4db1-1971-4098-97d1-451b872edbfc",
     "ProductId": "e23dcb5b-d383-41bb-8354-4b15d8eebf9a",
     "Quantity": 4,
     "UnitPrice": 12.99
   },
   {
-    "Id": "d5d1d8ea-04f7-4e9f-b632-179ff83957b4",
     "OrderId": "5b9d92a4-b5a5-46c3-9f4d-40d8b5b79a97",
     "ProductId": "e23dcb5b-d383-41bb-8354-4b15d8eebf9a",
     "Quantity": 1,

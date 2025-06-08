@@ -24,6 +24,7 @@ namespace Azaliq.Data.Configuration
                 .WithMany(x => x.FavoritedBy)
                 .HasForeignKey(x => x.ProductId)
                 .OnDelete(DeleteBehavior.Cascade);
+
         }
     }
 }

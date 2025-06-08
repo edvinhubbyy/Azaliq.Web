@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Azaliq.Data.Models\Azaliq.Data.Models.csproj" />
+    <ProjectReference Include="..\Azaliq.Data\Azaliq.Data.csproj" />
+  </ItemGroup>
+
+</Project>

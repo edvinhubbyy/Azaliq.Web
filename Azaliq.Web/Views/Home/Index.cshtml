@@ -2,7 +2,30 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container d-flex flex-column justify-content-center align-items-center text-center" style="min-height: 79vh; padding: 2rem;">
+    <h1 class="display-4 fw-bold mb-4" style="color: #6a4c93; animation: fadeInUp 1.2s ease forwards;">
+        Welcome to Azaliq 🌸
+    </h1>
+
+    <p class="fs-5 mb-3 text-muted" style="max-width: 500px; animation: fadeInUp 1.4s ease forwards; animation-delay: 0.3s;">
+        Discover the beauty of luxury flowers and exquisite products crafted just for you.
+    </p>
+
 </div>
+
+<style>
+    @@keyframes fadeInUp {
+        from
+
+    {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    }
+</style>

@@ -12,7 +12,7 @@ namespace Azaliq.Data.Dtos
 {
     public class OrderDto
     {
-        public Guid Id { get; set; }  // Change Id to Guid
+        public Guid Id { get; set; } 
         public DateTime OrderDate { get; set; }
         public decimal TotalAmount { get; set; }
 

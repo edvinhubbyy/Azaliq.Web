@@ -56,7 +56,6 @@ namespace Azaliq.Data.Seeding
                             continue;
                         }
 
-                        
                         // Optionally: Check for duplicates (by ID, depending on your business rule)
                         Order? existingOrder = await dbContext
                             .Orders
@@ -65,6 +64,13 @@ namespace Azaliq.Data.Seeding
                         if (existingOrder != null)
                         {
                             this.Logger.LogWarning(EntityInstanceAlreadyExist);
+                            continue;
+                        }
+
+                        var userExists = await dbContext.Users.AnyAsync(u => u.Id == orderDto.ApplicationUserId);
+                        if (!userExists)
+                        {
+                            this.Logger.LogWarning($"User with ID {orderDto.ApplicationUserId} does not exist.");
                             continue;
                         }
 

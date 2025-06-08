@@ -1,0 +1,65 @@
+﻿@model Azaliq.Web.ViewModels.Product.ProductFormInputModel
+
+@{
+    ViewData["Title"] = "Add Product";
+}
+
+<div class="container py-5" style="min-height: 95vh;">
+    <div class="bg-light rounded-4 shadow p-5 mx-auto" style="max-width: 800px; border-left: 6px solid #b5838d;">
+        <h2 class="text-center mb-4" style="color: #6a4c93;">
+            🌸 Add a Beautiful Product
+        </h2>
+
+        <form asp-action="Add" method="post" class="needs-validation" novalidate>
+            <div class="mb-4">
+                <label asp-for="Name" class="form-label fw-semibold" style="color: #6a4c93;"></label>
+                <input asp-for="Name" class="form-control form-control-lg rounded-pill shadow-sm" />
+                <span asp-validation-for="Name" class="text-danger small"></span>
+            </div>
+
+            <div class="mb-4">
+                <label asp-for="Description" class="form-label fw-semibold" style="color: #6a4c93;"></label>
+                <textarea asp-for="Description" class="form-control rounded-4 shadow-sm" rows="4" placeholder="Describe this floral wonder..."></textarea>
+                <span asp-validation-for="Description" class="text-danger small"></span>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <label asp-for="Price" class="form-label fw-semibold" style="color: #6a4c93;"></label>
+                    <input asp-for="Price" class="form-control form-control-lg rounded-pill shadow-sm" />
+                    <span asp-validation-for="Price" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="StockQuantity" class="form-label fw-semibold" style="color: #6a4c93;"></label>
+                    <input asp-for="StockQuantity" class="form-control form-control-lg rounded-pill shadow-sm" />
+                    <span asp-validation-for="StockQuantity" class="text-danger small"></span>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label asp-for="CategoryId" class="form-label fw-semibold" style="color: #6a4c93;">Category</label>
+                <select asp-for="CategoryId" asp-items="ViewBag.Categories" class="form-select shadow-sm rounded-pill">
+                    <option value="">🌷 Select a category</option>
+                </select>
+                <span asp-validation-for="CategoryId" class="text-danger small"></span>
+            </div>
+
+            <div class="mb-4">
+                <label asp-for="ImageUrl" class="form-label fw-semibold" style="color: #6a4c93;">Image URL</label>
+                <input asp-for="ImageUrl" class="form-control form-control-lg rounded-pill shadow-sm" placeholder="https://example.com/image.jpg" />
+                <span asp-validation-for="ImageUrl" class="text-danger small"></span>
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-lg px-5 rounded-pill fw-bold" style="background-color: #6a4c93; color: white;">
+                    💐 Save Product
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

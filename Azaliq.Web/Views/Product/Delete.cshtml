@@ -1,0 +1,149 @@
+﻿@model Azaliq.Web.ViewModels.Product.ProductFormInputModel
+
+@{
+    ViewData["Title"] = "Delete Product";
+}
+
+<style>
+    .delete-container {
+        max-width: 480px; /* much narrower */
+        margin: 2rem auto;
+        padding: 1rem 1.2rem;
+        background-color: #fff0f6;
+        border-left: 6px solid #d63384;
+        border-radius: 14px;
+        box-shadow: 0 0 10px rgba(214, 51, 132, 0.15);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #3a3a3a;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .delete-image {
+        width: 150px;
+        height: 150px;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 6px 12px rgba(214, 51, 132, 0.3);
+        flex-shrink: 0;
+    }
+
+        .delete-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 14px;
+        }
+
+    .delete-content {
+        width: 100%;
+        text-align: center;
+    }
+
+        .delete-content h2 {
+            color: #d63384;
+            font-weight: 900;
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .delete-content h4 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+    .product-info h5 {
+        font-size: 1.1rem;
+        font-weight: 800;
+        margin-bottom: 0.4rem;
+        color: #a91e52;
+    }
+
+    .product-info p {
+        font-size: 0.9rem;
+        margin-bottom: 0.4rem;
+        font-weight: 600;
+    }
+
+    form {
+        margin-top: 1.2rem;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .btn-delete {
+        background-color: #d63384;
+        color: white;
+        border: none;
+        padding: 0.5rem 1.8rem;
+        font-weight: 700;
+        font-size: 0.95rem;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 3px 8px rgba(214, 51, 132, 0.4);
+        min-width: 100px;
+    }
+
+        .btn-delete:hover {
+            background-color: #a91e52;
+        }
+
+    .btn-cancel {
+        padding: 0.45rem 1.8rem;
+        font-weight: 700;
+        font-size: 0.95rem;
+        border-radius: 30px;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #6c757d;
+        border: 2px solid #6c757d;
+        background: transparent;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 100px;
+    }
+
+        .btn-cancel:hover {
+            background-color: #6c757d;
+            color: white;
+            text-decoration: none;
+        }
+</style>
+
+<div class="delete-container">
+    <div class="delete-image">
+        <img src="@Model.ImageUrl" alt="@Model.Name" />
+    </div>
+
+    <div class="delete-content">
+        <h2>Delete Product</h2>
+        <h4>Are you sure you want to delete this product?</h4>
+
+        <div class="product-info">
+            <h5>@Model.Name</h5>
+            <p>@Model.Description</p>
+            <p><strong>Price:</strong> @Model.Price.ToString("C")</p>
+            <p><strong>Stock:</strong> @Model.StockQuantity</p>
+            <p><strong>Category ID:</strong> @Model.CategoryId</p>
+        </div>
+
+        <form asp-action="Delete" method="post">
+            <input type="hidden" asp-for="Id" />
+            <button type="submit" class="btn-delete">Delete</button>
+            <a asp-action="Index" class="btn-cancel">Cancel</a>
+        </form>
+    </div>
+</div>
