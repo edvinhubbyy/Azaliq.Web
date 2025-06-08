@@ -9,11 +9,6 @@ namespace Azaliq.Data.Models.Models
 {
     public class ApplicationUser : IdentityUser<Guid>
     {
-        public ApplicationUser()
-        {
-            this.Id = Guid.NewGuid();
-        }
-
         public ICollection<Order> Orders { get; set; } = new HashSet<Order>();
 
         public ICollection<ApplicationUserProduct> Favorites { get; set; } = new HashSet<ApplicationUserProduct>();

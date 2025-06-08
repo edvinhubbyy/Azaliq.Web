@@ -18,6 +18,9 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 // Add DbContext for Entity Framework
 builder.Services.AddDbContext<AzaliqDbContext>(options =>
     options.UseSqlServer(connectionString));
+
+//builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<AzaliqDbContext>();
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddScoped<IValidator, EntityValidator>();
@@ -29,15 +32,23 @@ builder.Services
     .AddIdentity<ApplicationUser, IdentityRole<Guid>>(options =>
     {
         options.SignIn.RequireConfirmedAccount = false;
+        
         options.Password.RequireDigit = false;
         options.Password.RequireNonAlphanumeric = false;
         options.Password.RequireLowercase = false;
         options.Password.RequireUppercase = false;
         options.Password.RequiredLength = 3;
+        
+        options.User.RequireUniqueEmail = true;
+        options.User.AllowedUserNameCharacters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_";
+        
+        options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+        options.Lockout.MaxFailedAccessAttempts = 5;
+        options.Lockout.AllowedForNewUsers = true;
+        
     })
-    .AddRoles<IdentityRole<Guid>>()
-    .AddRoleManager<RoleManager<IdentityRole<Guid>>>()
     .AddEntityFrameworkStores<AzaliqDbContext>()
+    .AddRoleManager<RoleManager<IdentityRole<Guid>>>()
     .AddDefaultTokenProviders()
     .AddDefaultUI();
 

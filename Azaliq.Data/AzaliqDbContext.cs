@@ -1,38 +1,28 @@
-﻿using Azaliq.Data.Models.Models;
+﻿using System.Reflection;
+using Azaliq.Data.Models.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection;
 
-namespace Azaliq.Data
+public class AzaliqDbContext : IdentityDbContext<
+    ApplicationUser,
+    IdentityRole<Guid>,
+    Guid>
 {
-    public class AzaliqDbContext : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>
+    public AzaliqDbContext(DbContextOptions<AzaliqDbContext> options)
+        : base(options)
     {
-        // This constructor is for debugging purposes
-        public AzaliqDbContext()
-        {
-        }
+    }
 
-        public AzaliqDbContext(DbContextOptions<AzaliqDbContext> options)
-            : base(options)
-        {
-        }
+    public DbSet<Product> Products { get; set; } = null!;
+    public DbSet<Category> Categories { get; set; } = null!;
+    public DbSet<Order> Orders { get; set; } = null!;
+    public DbSet<ApplicationUserProduct> ApplicationUserProducts { get; set; } = null!;
+    public DbSet<OrderItem> OrderItems { get; set; } = null!;
 
-        // Db Sets
-        public DbSet<Product> Products { get; set; } = null!;
-
-        public DbSet<Category> Categories { get; set; } = null!;
-
-        public DbSet<Order> Orders { get; set; } = null!;
-
-        public DbSet<ApplicationUserProduct> ApplicationUserProducts { get; set; }
-
-        public DbSet<OrderItem> OrderItems { get; set; } = null!;
-
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            base.OnModelCreating(builder);
-            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-        }
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        base.OnModelCreating(builder);
+        builder.ApplyConfigurationsFromAssembly(typeof(AzaliqDbContext).Assembly);
     }
 }

@@ -1,0 +1,105 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="container py-3" style="min-height: 95vh;">
+    <h1 class="fw-bold display-5 mb-4 text-center"
+        style="color: #6a4c93; letter-spacing: 1.5px; animation: fadeInDown 1s ease forwards;">
+        🔐 Register Your Account
+    </h1>
+
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post"
+                  class="shadow-lg rounded-5 p-4" style="background-color: #faf5f5; animation: fadeInUp 0.8s ease forwards;">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3" role="alert"></div>
+
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                    <label asp-for="Input.Email">Email</label>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                    <label asp-for="Input.Password">Password</label>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+
+                <div class="form-floating mb-4">
+                    <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                    <label asp-for="Input.ConfirmPassword">Confirm Password</label>
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+                <hr/>
+                <button id="registerSubmit" type="submit"
+                        class="w-100 btn btn-lg rounded-pill fw-semibold shadow"
+                        style="background-color: #6a4c93; color: white; letter-spacing: 1px; transition: background-color 0.3s ease, color 0.3s ease;">
+                    Register
+                </button>
+
+                <p class="mt-3 text-center">
+                    <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl"
+                       style="color: #6a4c93; font-weight: 600; letter-spacing: 0.8px; text-decoration: none;"
+                       onmouseover="this.style.textDecoration='underline';"
+                       onmouseout="this.style.textDecoration='none';">
+                        Already a user? Log In
+                    </a>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<style>
+    @@keyframes fadeInDown {
+        0%
+
+    {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    }
+
+    @@keyframes fadeInUp {
+        0%
+
+    {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    }
+
+    .btn:hover {
+        background-color: #8a6fc1 !important;
+        color: #f0e9f7 !important;
+        box-shadow: 0 0 15px #8a6fc1;
+    }
+
+    form {
+        transition: box-shadow 0.3s ease;
+    }
+
+        form:hover {
+            box-shadow: 0 0 25px rgba(106, 76, 147, 0.4);
+        }
+</style>
